@@ -1,30 +1,40 @@
-import "../styles/App.scss";
-import Button from "./Button";
-import Search from "./Search";
-import FoodItem from "./FoodItem";
-
-const handleClick = () => console.log("Clicked");
+import '../styles/App.scss';
+import BottomNavigation from './CommonUI/BottomNavigation';
+import TopNavigation from './CommonUI/TopNavigation';
+import SeanBottomNavBar from './CommonUI/SeanBottomNavBar';
+import { Outlet, useLocation } from 'react-router-dom';
 
 function App() {
+
+  const location = useLocation();
+
+  const PageTitleMap = {
+    '/': 'Home',
+    '/auth': 'Sign In Or Register',
+    '/profile': 'Profile',
+    '/dashboard': 'Dashboard',
+    '/nutrition': 'Nutrition',
+    '/exercise': 'Exercise',
+  };
+
+  const path = location.pathname;
+  const defaultTitle = path.slice(1).replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) || 'Title missing';
+
+  const title = PageTitleMap[path] || defaultTitle
+
+
+
   return (
     <div className="container">
-      <h1>Log Food</h1>
-      <Search />
-      <Button
-        onClick={handleClick}
-        text="Create a Food"
-        className="fullw-btn"
-      />
-      <h2>Created Foods</h2>
-      <FoodItem
-        foodName="Apple"
-        calorieValue={52}
-        fatValue={3}
-        carbValue={96}
-        proteinValue={1}
-        foodMeasurement="Apple"
-        foodImgPath="src/assets/apple.webp"
-      />
+      <TopNavigation />
+
+      <main>
+        <h1>{title}</h1>
+        <Outlet />
+      </main>
+
+      <BottomNavigation />
+      <SeanBottomNavBar />
     </div>
   );
 }
