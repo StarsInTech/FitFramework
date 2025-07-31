@@ -7,6 +7,9 @@ import App from "./components/App";
 import Auth from "./components/Auth/Auth";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+// import Users from "./components/Auth/Users";
+// import NewUsers from "./components/Auth/NewUsers";
+
 // ** CommonUI not needed here **
 // Dashboard
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -20,12 +23,14 @@ import Workout from "./components/Exercise/Workout";
 import Home from "./components/Home/Home";
 // Nutrition
 import Meal from "./components/Nutrition/Meal";
-import Nutrition from "./components/Nutrition/Meal";
+import Nutrition from "./components/Nutrition/Nutrition";
 import NutritionID from "./components/Nutrition/NutritionID";
 // Profile
 import Goals from "./components/Profile/Goals";
 import Profile from "./components/Profile/Profile";
 import Settings from "./components/Profile/Settings";
+import AllUsers from "./components/Auth/AllUsers";
+import NewUsers from "./components/Auth/NewUsers";
 
 // create the router and then define the pathing
 const router = createBrowserRouter([
@@ -42,7 +47,9 @@ const router = createBrowserRouter([
         element: <Auth />,
         children: [
           { path: 'login', element: <Login /> },
-          { path: 'register', element: <Register /> },
+          { path: 'register', element: <Register /> }, 
+          { path: 'allusers', element: <AllUsers /> },
+          { path: 'newusers', element: <NewUsers /> },
         ]
       },
       { path: 'profile', element: <Profile />,

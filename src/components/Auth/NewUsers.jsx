@@ -1,11 +1,11 @@
 import { Outlet } from "react-router";
 
-function Register() {
+function NewUsers() {
     return(
         <div>
-            <h2>Register Page</h2>
+            <h2>Add a New User</h2>
         </div>
     )
   }
   
-  export default Register;
+  export default NewUsers;
